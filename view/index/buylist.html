@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>订单列表_蘑菇街</title>
+    <link href="public/css/buylist.css" rel="stylesheet" type="text/css">
+    <link href="public/css/erji.css" rel="stylesheet" type="text/css" /> 
+    <link href="public/css/footer.css" rel="stylesheet" type="text/css" />
+    <script src="public/js/jquery.min2.14.js"></script>
+    <style>
+      #page a, #page span{float:left;height:30px;border:1px solid #ddd;color:#333;width:30px;text-align:center;font:13px/30px 微软雅黑;border-left:none;}
+      #page .first,#page .end{width:46px;}
+      #page .first{border-left:1px solid #ddd;border-top-left-radius:5px;border-bottom-left-radius:5px;}
+      #page .end{border-top-right-radius:5px;border-bottom-right-radius:5px;}
+      #page a:hover{background:#f2f2f2;}
+      #page span{background:#ddd;}
+      .detail{width:1200px;margin:30px auto;}
+      .detail_row{width:1225px;}
+      .tag{height:18px;margin:0 5px 0 0;}
+      .title{font:14px/22px 微软雅黑;text-overflow:ellipsis;height:22px;overflow:hidden;color:#666;margin:6px 0 0 0;}
+      .pay{font:700 16px/25px 微软雅黑;}
+    </style>
+</head>
+<body class="media_screen_1200">
+<?php require 'view/index/head2.html'?>
+  <div id="body_wrap"> 
+   <div class="mu_wrap wrap clearfix"> 
+<?php require 'view/index/user.html'?>
+     <div class="hidd mu_content_wrap"> 
+      <div class="order-title"> 
+       <ul class="order-title-column clearfix"> 
+        <li class="goods">商品</li> 
+        <li class="price">单价(元)</li> 
+        <li class="quantity">数量</li> 
+        <li class="aftersale">售后</li> 
+        <li class="total">实付款(元)</li> 
+        <li class="status">交易状态</li> 
+        <li class="other">操作</li> 
+       </ul> 
+      </div> 
+      <div id="orderWrap">
+       <div class="order-list">
+        <div class="order-section unpaid" data-payid="22620483214572"> 
+<?php
+if(!empty($a)){
+foreach($a as $v){
+  if($v[0]['status']==1) $status = '<font color="#801dae">等待付款</font>';
+  if($v[0]['status']==2) $status = '<font color="red">等待发货</font>';
+  if($v[0]['status']==3) $status = '<font color="blue">已发货</font>';
+  if($v[0]['status']==4) $status = '<font color="green">已收货</font>';
+  if($v[0]['status']==5) $status = '<font color="pink">已评价</font>';
+  if($v[0]['status']==6) $status = '交易完成';
+if($v[0]['status']==1) $btn = '<a class="order-btn primary" target="_top" href="?c=buylist&pay='.$v[0]['id'].'">付款</a>';
+if($v[0]['status']==2) $btn = '<a class="order-btn primary" target="_top" href="?c=buylist&back='.$v[0]['id'].'">退货</a>';
+if($v[0]['status']==3) $btn = '<a class="order-btn primary" target="_top" href="?c=buylist&p='.$v[0]['total'].'&receive='.$v[0]['id'].'">确认收货</a>';
+if($v[0]['status']==4) $btn = '<a style="background:green;border:0" class="order-btn primary">待评价</a>';
+if($v[0]['status']==5) $btn = '<a style="background:#333;border:0" class="order-btn primary">交易完成</a>';
+
+
+
+echo '  <table class="order-table" style="margin:0 0 20px 0"> 
+          <tbody> 
+           <tr class="order-table-header"> 
+            <td colspan="7"> 
+             <div class="order-info fl">
+              <span class="no"> 订单编号： <span class="order_num">'.$v[0]['no'].'</span></span> 
+              <a class="shop-name" target="_blank" href="#"></a> 
+             </div></td> 
+           </tr>';
+
+$pay = 0;
+foreach($v as $o){
+$img = dirname($o['img']).'/100_'.basename($o['img']);
+if($o['dis']==0){
+  $bn = '<a class="order-btn primary" target="_top" href="?c=buylist&oid='.$o['id'].'&ass='.$o['gid'].'">评价</a>';
+}elseif($o['dis']==1){
+  $bn = '已评价';
+}
+
+$input = '
+  <form class="fr" action="?c=buylist&oid='.$o['id'].'&mess='.$o['gid'].'" method="post">
+  <textarea name="mess" class="order-table" style="width:500px;padding:10px" rows="6" cols="80" placeholder="评论..."></textarea><br/>
+  <a style="height:27px;width:50px;line-height:27px;font-size:12px;font-weight:600;text-align:center;margin:0 0 60px 10px;border-radius:3px;background:#2196F3;float:right;color:#fff" href="?c=buylist&list">取消</a>
+  <input type="submit" style="height:27px" class="fr order-btn primary order-pay" value="提交">
+  </form> ';
+
+$form = $v[0]['gid']==$c ? $input : null;
+$bn = $o['status']==4 ? $bn : null;
+$bn = empty($form) ? $bn : null;
+
+
+echo '    <tr class="order-table-item last"> 
+            <td class="goods"><a class="pic" href="?c=detail&detail='.$o['gid'].'" title="查看宝贝详情" hidefocus="true" target="_blank"> <img src="'.$img.'" alt="查看宝贝详情" width="70" /> </a> 
+             <div class="desc"> 
+              <p> <a href="?c=detail&detail='.$o['gid'].'" target="_blank">'.$o['name'].'</a> 
+               </p> 
+              <ul class="ui-tags-list clearfix"> 
+              </ul> 
+             </div> </td> 
+            <td class="price"><p>'.$o['pay'].'</p> </td> 
+            <td class="quantity">'.$o['num'].'</td> 
+            <td class="aftersale"> </td>
+            <td class="total" rowspan="1"> <p class="total-price">￥ '.($o['pay']*$o['num']).'</p></td> 
+            <td class="status" rowspan="1"> <p class="wait_pay">'.$form.$bn.'</p> 
+            </td> 
+            <td class="other" rowspan="1"> 
+            </td> 
+           </tr>';
+
+
+}
+
+
+
+
+echo '    <tr class="order-table-footer"> 
+            <td colspan="4"> 
+             <ul> 
+              <li> 
+              </li> 
+              <li> <a class="order-link order-cancel" href="?c=buylist&s='.$v[0]['status'].'&delete='.$v[0]['id'].'" data-payid="22620483214572">取消订单</a> </li> 
+             </ul> </td> 
+            <td class="total"> <span class="sub">总计：</span>￥'.$v[0]['total'].'</td> 
+            <td class="status"> <p class="wait_pay">'.$status.'</p> </td> 
+            <td class="other">'.$btn.'</td> 
+           </tr>
+          </tbody> 
+         </table>';
+
+
+
+  }
+}
+?>
+        </div> 
+       </div>
+       <div id="paginator-list"></div>
+      </div> 
+     </div> 
+  <div id="page" class="fr"> 
+    <?php E($b['page'])?>
+  </div> 
+    </div> 
+   </div> 
+  </div>
+
+
+
+<?php require 'view/index/footer.html'; ?>

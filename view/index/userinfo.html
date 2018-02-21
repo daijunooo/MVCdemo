@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>订单列表_蘑菇街</title>
+    <link href="public/css/buylist.css" rel="stylesheet" type="text/css">
+    <link href="public/css/erji.css" rel="stylesheet" type="text/css" /> 
+    <link href="public/css/footer.css" rel="stylesheet" type="text/css" />
+    <script src="public/js/jquery.min2.14.js"></script>
+    <style>
+      #page a, #page span{float:left;height:30px;border:1px solid #ddd;color:#333;width:30px;text-align:center;font:13px/30px 微软雅黑;border-left:none;}
+      #page .first,#page .end{width:46px;}
+      #page .first{border-left:1px solid #ddd;border-top-left-radius:5px;border-bottom-left-radius:5px;}
+      #page .end{border-top-right-radius:5px;border-bottom-right-radius:5px;}
+      #page a:hover{background:#f2f2f2;}
+      #page span{background:#ddd;}
+      .detail{width:1200px;margin:30px auto;}
+      .detail_row{width:1225px;}
+      .tag{height:18px;margin:0 5px 0 0;}
+      .title{font:14px/22px 微软雅黑;text-overflow:ellipsis;height:22px;overflow:hidden;color:#666;margin:6px 0 0 0;}
+      .pay{font:700 16px/25px 微软雅黑;}
+      #userform{padding:0 0 0 50px}
+      #userform dt{float:left;text-align:right;width:100px;padding:10px 10px;}
+      #userform dd{padding:8px 0;height:auto;}
+      #userform dd img{border:2px solid #dfdfdf}
+      #userform dd .input{border:2px solid #ddd;margin:0 3px 0 0;border-radius:3px}
+    </style>
+</head>
+<body class="media_screen_1200">
+<?php require 'view/index/head2.html'?>
+  <div id="body_wrap"> 
+   <div class="mu_wrap wrap clearfix"> 
+<?php require 'view/index/user.html'?>
+
+    <div class="fr hidd" style="width:1030px">
+      <h1 style="color:#ff6aa2;font-size:14px;font-weight:700;height:30px;line-height:30px;background:#f9f9f9;height:30px;padding:0 0 0 100px;margin-bottom: 14px;">基本资料</h1>
+      <dl id="userform">
+        <dt>头像:</dt>
+        <dd><img height="138px" width="138px" src="<?php E($img)?>"></dd>
+        <dt>用户名:</dt>
+        <dd><input class="input" type="text" readonly value="<?php E($a[0]['name'])?>"></dd>
+        <dt>修改密码:</dt>
+        <dd><input id="ipwd" placeholder="请输入原始密码" class="input" type="password"><input style="height:23px;width:30px;text-align:center;border-radius:3px;display:inline-block;background:#f07;color:#fff;border:2px solid #f07" id="pwd" type="button" value="提交"><font id="tips" style="visibility:hidden;margin:0 0 0 10px" color="red">原始密码不正确!</font></dd>
+        <form action="?c=user&head" method="post" enctype="multipart/form-data">
+        <dt>修改头像:</dt>
+        <dd><input style="height:20px;margin:0 2px" id="upload" type="submit" value="点击上传"><input name="head" type="file"></dd>
+        </form>
+      </dl>
+    </div>
+   </div> 
+  </div>
+    <div id="xgmm" style="z-index:99999;position:fixed;top:0;overflow:hidden;width:100%;height:100%;background:rgba(0,0,0,0.4);visibility:hidden">
+      <div style="margin:auto;position:absolute;top:0;left:0;bottom:0;right:0;padding:50px;height:50px;width:200px;border-radius:3px;z-index:999;background:#fff">
+          <dt style="float:left">输入新密码:</dt>
+          <dd><input id="iipwd" class="input" type="password"><a href="" style="height:19px;width:30px;text-align:center;border-radius:3px;display:inline-block;background:#f07;color:#fff;border:2px solid #f07" id="xgpwd">修改</a></dd>
+          <form action="" method="post" enctype="multipart/form-date">
+      </div>
+    </div>
+
+
+
+<?php require 'view/index/footer.html'; ?>
+<script>
+  $(function(){
+    $('#pwd').click(function(){
+      var pwd = $('#ipwd')[0].value;
+      $.post('?c=user&pwd',{val:pwd},function(data){
+        if(data=='true'){
+          console.log($('#xgmm')[0]);
+          $('#xgmm')[0].style.visibility = 'visible';
+          $('body')[0].style.overflow = 'hidden';
+        }
+        if(data=='false'){
+          $('#tips')[0].style.visibility = 'visible';
+        }
+      });
+    });
+    $('#ipwd').focus(function(){
+      $('#tips')[0].style.visibility = 'hidden';
+    });
+    $('#xgpwd').mouseover(function(){
+      console.log($(this));
+      $(this)[0].href = '?c=user&repwd='+$('#iipwd')[0].value;
+    });
+  });
+</script>

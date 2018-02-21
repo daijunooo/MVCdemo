@@ -1,0 +1,38 @@
+<?php require_once 'view/index/header.html'; ?>
+
+    <title>用户注册</title>
+    <link rel="stylesheet" type="text/css" href="public/css/reg.css">
+    <link rel="stylesheet" type="text/css" href="public/css/footer.css">
+  </head>
+  <body>
+    <div id="zhucemain">
+      <a href="?c=index" class="log1">
+        <img src="public/images/upload.png" /></a>
+      <div class="zhuceleft fl">
+        <a href="?c=index">
+          <img src="public/images/52.jpg" /></a>
+      </div>
+      <div class="zhuceright fr">
+        <span class="biaoti">
+          <h3>新用户注册</h3></span>
+        <form action="?c=reg" method="post">
+          <input class="W18 zp W19" type="text" name="user" placeholder="用户名" />
+          <input class="W18 zp W19" type="password" name="pwd" placeholder="密码" />
+          <input class="W18 zp W19" type="password" name="repwd" placeholder="确认密码" />
+          <span class="zp2">
+            <input class="W18 ml1" type="text" name="code" placeholder="验证码" />
+            <span class="color1">
+              <img src="model/code.php" onclick="this.src=this.src+'?i='+Math.random()" /></span>
+            <span class="zp">
+              <input class="tijiao ml1" type="submit" value="注册" /></span>
+            <span class="zp ml1">
+              <span>
+                <span class="zhangh fr">
+                  <a href="?c=login">已有账号</a></span>
+              </span>
+            </span>
+          </span>
+        </form>
+      </div>
+    </div>
+<?php require_once 'view/index/footer.html'; ?>

@@ -1,0 +1,45 @@
+  <div id="header" class="J_sitenav header_2015" data-ptp="_head"> 
+   <div class="wrap clearfix" style="width:1200px;margin:auto;">
+    <a href="?c=index" rel="nofollow" class="home fl">蘑菇街首页</a>
+    <ul class="header_top">
+    
+<?php
+if(!empty($_SESSION['index']['name'])){
+    echo '<li class="s1 show-nologin"><a rel="nofollow" href="?c=buylist&list">'.$_SESSION['index']['name'].'</a>
+    </li>
+    <li class="s1 show-nologin"><a href="?c=login&logout">[退出登录]</a></li>';
+}else{
+  echo '<li class="s1 show-nologin"><a rel="nofollow" href="?c=url&d=login">请登录</a></li><li class="s1 show-nologin"><a rel="nofollow" href="?c=url&d=register">注册</a></li>';
+}
+?>
+
+
+
+     <li class="s1 myorder has_line"><a href="?c=buylist&list" target="_top" class="text display_u" ref="nofollow">我的订单</a></li>
+     <li class="s1 has_line shopping_cart_v2"><a class="cart_info_wrap" href="?c=car&list" target="_top" ref="nofollow"><span class="cart_info">购物车
+<?php
+if(!empty($_SESSION['car'])){
+  $num = 0;
+  foreach($_SESSION['car'] as $g){
+    $num += $g['num'];
+  }
+  echo '<span>('.$num.')</span>';
+}
+?>
+    </span></a><i class="icon_delta"></i><span class="shopping_cart_loading"></span></li>
+     <li class="s1 has_line has_icon custom_item"><a rel="nofollow" href="" ref="nofollow" target="_top">客户服务</a><i class="icon_delta"></i>
+      <ol class="ext_mode">
+       <li class="s2"><a target="_top" rel="nofollow" href="">消费者服务</a></li>
+       <li class="s2"><a target="_top" rel="nofollow" href="">商家服务</a></li>
+       <li class="s2"><a target="_top" rel="nofollow" href="">规则中心</a></li>
+      </ol></li>
+     <li class="s1 has_line has_icon myxiaodian"><a href="" ref="nofollow" target="_top" class="text display_u">我的小店</a><i class="icon_delta"></i>
+      <ol class="ext_mode">
+       <li class="s2"><a target="_top" rel="nofollow" href="">管理后台</a></li>
+       <li class="s2"><a target="_top" rel="nofollow" href="">商家社区</a></li>
+       <li class="s2"><a target="_top" rel="nofollow" href="">商家培训</a></li>
+       <li class="s2"><a target="_top" rel="nofollow" href="">市场入驻</a></li>
+      </ol></li>
+    </ul>
+   </div> 
+  </div>

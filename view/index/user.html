@@ -1,0 +1,93 @@
+<?php
+$id = $_SESSION['index']['id'];
+$sql = 'SELECT id,status FROM s48_order WHERE uid='.$id;
+$goods = (model('dbSql',$sql));
+$v1 = 0;
+$v2 = 0;
+$v3 = 0;
+foreach($goods as $v){
+  if($v['status']==1) $v1++;
+  if($v['status']==3) $v2++;
+  if($v['status']==4) $v3++;
+}
+$v1 = $v1==0 ? null : $v1;
+$v2 = $v2==0 ? null : $v2;
+$v3 = $v3==0 ? null : $v3;
+$sql = 'SELECT name,img,points 
+          FROM s48_user 
+         WHERE id='.$_SESSION['index']['id'];
+$res = model('dbSql',$sql);
+$img = dirname($res[0]['img']).'/100_'.basename($res[0]['img']);
+?>
+     <div class="mu_nav_wrap"> 
+      <!-- 导航 --> 
+      <!--info--> 
+      <div class="mu_nav_info"> 
+       <div class="mu_nav_info_avatar"> 
+        <div class="mu_nav_info_avatar_mk"></div> 
+        <img src="<?php E($img)?>" width="100" height="100" alt="" title="<?php E($res[0]['name'])?>" /> 
+       </div> 
+       <p class="mu_nav_info_uname"><?php E($res[0]['name'])?></p> 
+      </div> 
+      <!-- info end --> 
+      <!-- nav --> 
+      <div class="mu_nav mu_expand"> 
+      <a href="?c=buylist&list">
+       <div class="mu_title">
+          我的订单
+       </div> 
+      </a>
+       <ul class="mu_nav_item"> 
+        <li class="c"> <a href="?c=buylist&list">全部订单</a> </li> 
+        <li> <a href="?c=buylist&nopay"> 待付款 <i id="unpaidOrder" class="mu_nav_count"><?php E($v1)?></i> </a> </li> 
+        <li> <a href="?c=buylist&waitsh"> 待收货 <i id="unReceivedOrder" class="mu_nav_count"><i class="mu_nav_count_arw"><?php E($v2)?></i></i> </a> </li> 
+        <li> <a href="?c=buylist&waitdis"> 待评价 <i id="waitingRateOrder" class="mu_nav_count"><i class="mu_nav_count_arw"><?php E($v3)?></i></i> </a> </li> 
+        <li> <a href="#">  <i class="mu_nav_count"><i class="mu_nav_count_arw"></i></i> </a> </li> 
+        <!-- 新增，stage=8 回收站订单 --> 
+        <li> <a href="#">  <i id="recyleOrder" class="mu_nav_count"><i class="mu_nav_count_arw"></i></i> </a> </li> 
+       </ul> 
+      </div> 
+      <div class="mu_nav"> 
+       <div class="mu_title">
+        <a href="?c=user&info">个人信息</a>
+       </div> 
+      </div> 
+      <div class="mu_nav"> 
+       <div class="mu_title">
+        <a href="?c=user&info">修改头像</a>
+       </div> 
+      </div> 
+      <div class="mu_nav"> 
+       <div id="wdjf" class="mu_title">
+        我的积分
+       </div> 
+       <div class="mu_title">
+        开发中...
+       </div> 
+       <div class="mu_title">
+        开发中...
+       </div> 
+       <div class="mu_title">
+        开发中...
+       </div> 
+       <div class="mu_title">
+        开发中...
+       </div> 
+      </div>
+     </div>
+     <div id="jf" style="visibility:hidden;width:100%;height:100%">
+       <ul style="height:300px;width:1030px;background:url(public/images/mgb.jpg);position:absolute;left:202px;top:162px;padding:80px 0 0 0">
+         <li class="fl" style="font:24px/30px 黑体;color:#f07;margin:40px 80px 0 100px;">我的蘑菇币:<font color="#A5D60E"><?php E($res[0]['points'])?></font></li>
+         <li class="fl" style="padding:0 0 0 50px;border-left:1px solid #dfdfdf"><img src="public/images/dou.png"></li>
+         <li class="fl" style="width:300px;padding:0 0 0 50px;">您的每10元消费将获得1枚蘑菇币，蘑菇币是各种活动中可以使用的货币，在您购物的时候还可以用来抵消您的货款，1枚蘑菇币可以抵一元，您也可以用蘑菇币去蘑菇市场兑换想要的礼品！</li>
+       </ul>
+     </div>
+     <script>
+      $(function(){
+        $('#wdjf').click(function(){
+          console.log(123457);
+          $('#jf')[0].style.visibility = 'visible';
+          $('.hidd')[0].style.visibility = 'hidden';
+        });
+      });
+     </script>

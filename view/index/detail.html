@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/> 
+  <title><?php E($a[0]['name'])?></title> 
+  <link href="public/css/erji.css" rel="stylesheet" type="text/css" /> 
+  <link href="public/css/footer.css" rel="stylesheet" type="text/css" /> 
+  <script type="text/javascript" src="public/js/jquery.min2.14.js"></script>
+  <style>
+    .goea{margin:40px 0 0 0;}
+    .image,.image ul{width:400px}
+    .image ul{margin:20px 0 0 0;height:80px;overflow:hidden;}
+    .image ul li img{height:80px;width:70px;margin:0 0 0 9px;}
+    .iesa{margin:0 0 0 35px;width:550px}
+    .iesa h1{font:700 24px/25px 微软雅黑;padding:0 10px}
+    .iesa .ul1{height:100px;background:url(public/images/spjg.png);margin-top:30px}
+    .iesa .ul1 li{padding:0 10px;color:#999;line-height:33px;}
+    .iesa .ul1 li a{padding:0 30px 0 10px;color:#333}
+    #pay{font:700 24px/33px 微软雅黑;color:#ef2f23;padding:10px;}
+    #opay{font:500 14px/33px 微软雅黑;padding:10px;text-decoration:line-through}
+    .iesa .ul2{padding:10px 20px;line-height:44px;color:#999;margin:20px 0 0 0}
+    .iesa .ul2 li{height:50px;}
+    .iesa .ul2 li a{padding:4px 8px;border:1px solid #ddd;color:#333;font:700 14px/35px 微软雅黑;margin:0 0 0 10px}
+    .iesa .ul2 li input{padding:2px 8px;height:23px;width:28px;text-align:center;border:1px solid #ddd;font:500 14px/29px 微软雅黑;}
+    .iesa .ul2 .kf{background:url(public/images/lxkf.gif) no-repeat 60px 5px}
+    .iesa .ul2 .btn{height:50px;margin:20px 0 50px 30px;}
+    .iesa .ul2 .btn a{padding:0;width:200px;height:50px;font:20px/50px 微软雅黑;text-align:center;display:inline-block;}
+    .iesa .ul2 .btn .buy{border:1px solid #ef2f23;background:#ef2f23;color:#fff}
+    .spes{margin:50px 0 0 0;}
+    .spes1{width:198px;border:1px solid #ddd;margin:0 20px 0 0;}
+    .spes1 h1{font:18px/58px 微软雅黑;text-align:center;border-bottom:1px solid #ddd;background:#eee;margin:0 0 30px 0;height:58px;}
+    .spes1 ul li{width:160px;margin:0 auto 30px;}
+    .spes1 ul li img{width:160px;height:240px}
+    .spes1 ul li h3{margin:4px 0 0 0;font:10px/1 微软雅黑;}
+    .spes2{width:978px;border:1px solid #ddd;padding:0 0 20px 0}
+    .spes2 .nav{height:58px;background:#eee}
+    .spes2 .nav a{width:149px;height:58px;border-right:1px solid #ddd;border-bottom:1px solid #ddd;display:block;margin:0;float:left;text-align:center;font:18px/58px 微软雅黑;}
+    .detail{width:800px;margin:50px auto;color:#666}
+    .detail h1{font:16px/28px 微软雅黑;border-bottom:2px solid red}
+    .detail p{margin-top:20px;}
+    .detail img{margin:30px auto}
+    .detail .user{width:800px;border-bottom:1px dashed #ddd;margin-top:30px;}
+    .detail .user .name{width:15%}
+    .detail .user .content{width:65%}
+    .detail .user .time{width:20%}
+    .spic:hover{border-top:3px solid #EF2F23}
+  </style>
+</head>
+<body>
+<a name="top"></a>
+<div><a href="#top" style="width:40px;height:40px;border:1px solid #ddd;text-align:center;line-height:40px;position:fixed;right:10px;bottom:20px;background:#ddd">TOP^</a></div>
+
+<?php require 'view/index/head2.html'; ?>
+
+
+<div class="w">
+  <div class="goea w">
+    <div class="image fl">
+
+
+<?php      
+if(!empty($b)){
+  echo '<img id="bpic" src="'.dirname($b[0]['name']).'/400_'.basename($b[0]['name']).'"><ul>';
+  foreach($b as $v){
+    $img = dirname($v['name']).'/100_'.basename($v['name']);
+    $bimg = dirname($v['name']).'/400_'.basename($v['name']);
+
+    echo '
+      <li class="fl"><img name="'.$bimg.'" class="spic" src="'.$img.'"></li>
+    ';
+  }
+}
+?>
+
+
+      <div class="clear"></div>
+      </ul>
+    </div>
+    <div class="iesa fl">
+      <h1><?php E($a[0]['name'])?></h1>
+      <ul class="ul1">
+        <li>原价: <span id="opay">&yen;<?php E($a[0]['pay']+16)?></span></li>
+        <li>现价: <span id="pay">&yen;<?php E($a[0]['pay'])?></span></li>
+        <li>
+          累计销量:<a href=""><?php E($a[0]['out'])?></a>
+          评价:<a href="#yhpl"><?php E(count($d))?></a>
+          累计浏览次数:<a href=""><?php E($a[0]['look'])?></a>
+        </li>
+      </ul>
+      <ul class="ul2">
+        <li class="kf">客服: </li>
+        <li>尺码: <a style="margin:0 0 0 28px">S</a><a>M</a><a>L</a></li>
+        <li>数量: <a id="jian" style="cursor:pointer;font-weight:400;margin-left:28px;border-right:0">-</a><input type="text" name="<?php E($a[0]['id'])?>" value="1" readonly><a id="jia" style="border-left:0;margin:0;cursor:pointer">+</a></li>
+        <li class="btn">
+          <a class="buy" href="">立即购买</a>
+          <a class="car" href="">加入购物车</a>
+        </li>
+        <li style="background:url(public/images/fwcn.png) no-repeat 65px">服务承诺: </li>
+        <li style="background:url(public/images/zffs.png) no-repeat 70px">支付方式: </li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="spes w">
+    <div class="spes1 fl">
+      <h1>大家都在看</h1>
+      <ul>
+<?php
+if(!empty($c)){
+foreach($c as $h){
+$img = dirname($h['img']).'/220_'.basename($h['img']);
+
+echo '
+        <li>
+          <a href="?c=detail&detail='.$h['id'].'">
+            <img src="'.$img.'">
+            <h3>'.$h['name'].'</h3>
+            <h3>&yen;'.$h['pay'].'</h3>
+          </a>
+        </li>
+      ';
+}
+}
+?>
+      </ul>
+    </div>
+    <div class="spes2 fl">
+      <div class="nav">
+        <a class="btn1" href="">商品详情</a>
+        <a class="btn2" href="#yhpl">用户评价</a>
+        <a style="width:678px;border-right:0"></a>
+        <div class="clear"></div>
+      </div>
+      <div class="detail">
+        <h1>商品描述:</h1>
+        <p><?php E($a[0]['decribe'])?></p>
+
+<?php
+if(!empty($b)){
+  foreach($b as $i){
+
+    echo'<img src="'.$i['name'].'">';
+  }
+}
+?>        
+      </div>
+      <div class="detail"><a name="yhpl"></a>
+        <h1>用户评论:</h1>
+<?php
+if(!empty($d)){
+foreach($d as $dis){
+
+
+
+echo '
+        <div class="user">
+          <div class="name fl">
+            <h4>用户:&nbsp;'.$dis['name'].'</h4>
+          </div>
+          <div class="content fl">
+            <p>评论:'.$dis['discuss'].'</p>
+          </div>
+          <div class="time fl">
+            <p>评论时间:'.date('y-m-d h:i:s',$dis['time']).'</p>
+          </div>
+          <div class="clear"></div>
+        </div>
+      ';
+
+  }
+}
+?>
+
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+
+
+<?php require 'view/index/footer.html'; ?>
+
+
+<script type="text/javascript">
+  $(function(){
+    $('.tabbar-list li').click(function(){
+        var index= $(this).index();
+        $(this).addClass('selected').siblings().removeClass('selected');
+        $('.module-panel').eq(index).removeClass('ui-none').siblings().addClass('ui-none');
+    });
+
+    $('.buy').mouseover(function(){
+      var num = $('.ul2 li input').val();
+      var id = $('.ul2 li input')[0].name;
+      $(this)[0].href = '?c=buy&id='+id+'&buy='+num;
+    });
+
+    $('.car').mouseover(function(){
+      var num = $('.ul2 li input').val();
+      var id = $('.ul2 li input')[0].name;
+      $(this)[0].href = '?c=car&id='+id+'&add='+num;
+    });
+
+    $('#jia').click(function(){
+      $('.ul2 li input')[0].value++;
+    });
+
+    $('#jian').click(function(){
+      $('.ul2 li input')[0].value--;
+      if($('.ul2 li input').val()<1){
+        $('.ul2 li input')[0].value = 1;
+      }
+    });
+
+    $('.spic').mouseover(function(){
+      var src = $(this)[0].name;
+      $('#bpic')[0].src = src;
+    });
+  })
+</script>

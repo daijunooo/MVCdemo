@@ -1,0 +1,38 @@
+<?php require 'view/index/header.html';?>
+  <title>用户登录</title>
+  <link rel="stylesheet" type="text/css" href="public/css/login.css">
+  <link rel="stylesheet" type="text/css" href="public/css/footer.css">
+  
+  <body>
+    <div id="loginmain">
+      <a href="?c=index" class="log">
+        <img src="public/images/1.jpg" /></a>
+      <div class="loginleft fl">
+        <a href="?c=index">
+          <img src="public/images/52.jpg" /></a>
+      </div>
+      <div class="loginright fr">
+        <span class="deng">
+          <a href="#" class="fl la1" title="普通登录">
+            <h4>普通登录</h4></a>
+          <a href="#" class="fr la2" title="手机无密码登录">
+            <h4>手机无密码登录</h4></a>
+        </span>
+        <form action="?c=login" method="post">
+          <p>
+            <input class="W10" type="text" name="user" placeholder="请输入用户名" /></p>
+          <p>
+            <input class="W10" type="password" name="pwd" placeholder="密码" /></p>
+          <input class="W11" type="checkbox" name="checkbox" />
+          <span class="la4">2周内自动登录</span>
+          <p>
+            <input class="W10 W12" type="submit" value="登录" /></p>
+          <p>
+            <a href="?c=url&d=register" class="fr la4 la6 la9">新用户注册</a></p>
+          <div clear="both"></div>
+        </form>
+      </div>
+      <div clear="both"></div>
+    </div>
+
+<?php require 'view/index/footer.html';?>

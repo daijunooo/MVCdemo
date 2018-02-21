@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>确认订单</title>
+  <link href="public/css/erji.css" rel="stylesheet" type="text/css">
+  <link href="public/css/buy.css" rel="stylesheet" type="text/css">
+  <link href="public/css/footer.css" rel="stylesheet" type="text/css">
+  <script src="public/js/jquery.min2.14.js"></script>
+  <script>
+    $(function(){
+      $('#pay').click(function(){
+        $('#form').submit();
+      });
+      $('#jia').click(function(){
+        $.get('?c=buy&jia');
+        window.location.reload();
+      });
+      $('#jian').click(function(){
+        $.get('?c=buy&jian');
+        window.location.reload();
+      });
+    });
+  </script>
+</head>
+<body>
+
+<?php require 'view/index/head2.html'; ?>
+<div id="body_wrap">
+<div id="pay_info">   <div class="g-wrap wrap"><div class="cart_wrap">  <div class="cart_page_wrap pt0"> <h2 class="cart_stit">填写收货地址</h2> <div class="cart_address_wrap" id="cartAddress">  
+<div id="J_otherAddrWrap"><div class="__addressPop"><dl class="address_pop">
+
+<form id="form" action="?c=buy&pay=<?php E($b)?>" method="post">
+
+  <dt>
+   省：
+  </dt>
+  <dd class="pt_ie6hack">
+   <i class="needicon">*</i>
+   <input type="text" name="province" class="text formsize_normal J_postcode J_form vm" />
+   <label class="dt" for="">市：</label>
+   <input type="text" name="city" class="text formsize_normal J_postcode J_form vm" />
+   <label class="dt" for="">区：</label>
+   <input type="text" name="area" class="text formsize_normal J_postcode J_form vm" />
+   <span class="prompt"></span>
+  </dd>
+  <dt>
+   邮政编码：
+  </dt>
+  <dd>
+   <i class="needicon">*</i>
+   <input type="text" data-type="c" data-errormsg="请填写正确的邮政编码" data-normal="" class="text formsize_normal J_postcode J_form vm" name="postcode" />
+   <span class="prompt"></span>
+  </dd>
+  <dt>
+   街道地址：
+  </dt>
+  <dd>
+   <i class="needicon">*</i>
+   <textarea data-type="*" data-min="5" data-max="100" data-normal="" data-errormsg="" class="textarea" name="street" cols="78" rows="3"></textarea>
+   <span class="prompt breakline"></span>
+  </dd>
+  <dt>
+   收货人姓名：
+  </dt>
+  <dd>
+   <i class="needicon">*</i>
+   <input type="text" data-type="*" data-errormsg="请填写收货人" data-normal="" class="text formsize_normal J_name J_form vm" name="name" />
+   <span class="prompt"></span>
+  </dd>
+  <dt>
+   手机：
+  </dt>
+  <dd>
+   <i class="needicon">*</i>
+   <input type="text" data-type="phone" data-errormsg="请填写正确的联系号码" data-normal="" class="text formsize_normal J_mobile J_form vm" name="mobile" />
+   <span class="prompt"></span>
+  </dd>
+  <dt></dt>
+  <dd class="pt10 oper_btn">
+  </dd> 
+
+
+
+
+
+ </div></div> </div> <h2 class="cart_stit pt10">确认商品信息</h2><table class="cart_table" id="orderTable"> <thead> <tr> <th class="cart_table_goods_wrap">商品</th> <th width="80">单价(元)</th> <th width="80">数量</th> <th class="cart_table_goodsctrl_wrap">小计(元)</th> </tr> </thead> <tbody>
+
+<?php
+$total = 0;
+$num = 0;
+if(!empty($a)){
+    foreach($a as $v){
+
+    $total += $v['num']*$v['pay'];
+    $num += $v['num'];
+
+echo '
+ <tr class="tr_checked item4shop14e7y" data-stockid="1f3ta"> <td class="cart_table_goods_wrap"> <a href="?c=detail&detail='.$v['id'].'" target="_blank" class="cart_goods_img"> <img class="cartImgTip" src="'.$v['img'].'" width="78" height="78"> </a> <a href="?c=detail&detail='.$v['id'].'" target="_blank" class="cart_goods_t cart_hoverline">'.$v['name'].'</a> </td> <td class="cart_alcenter"> <p class="cart_bold cart_itemUnit">'.$v['pay'].'</p> </td> <td class="cart_alcenter"> <p class="cart_itemNum">'.$v['num'].'</p>  <td class="cart_alcenter"> <p class="cart_font16 item_sum itemSum" data-price="399.00">'.($v['num']*$v['pay']).'</p> </td>  </tr>'; 
+
+    }
+}
+?>
+
+  <tr class="tr_checked"> <td colspan="3" class="pl10 cart_largepding"> <label for="">备注：</label> <input style="color:#333" type="text" class="cart_table_note cart_text cart_vm" name="beizhu" style="color: rgb(204, 204, 204);"> </form><span class="fr cart_red goodsNum">可用蘑菇币 <?php E($_SESSION['index']['points']-$_SESSION['index']['mgb'])?>个      
+  <div> 
+    <a id="jian" style="cursor:pointer"><span>-</span></a> 
+    <input style="width:30px;text-indent:10px" type="text" value="<?php E($_SESSION['index']['mgb'])?>" readonly/>
+    <a id="jia" style="cursor:pointer"><span>+</span></a> 
+  </div> 
+  </span>
+
+
+
+
+</td> <td colspan="3" class="pr15 cart_largepding">  <div class="cart_table_discount pt5 pr10 clearfix">   <span class="ml20 fr"><strong class="J_ShipExpense" data-groupid="62980181"></strong></span> </div>  </td> </tr> <!--合计--> <tr class="tr_checked"> <td colspan="6" class="pl10 pr20 cart_largepding"> <div class="cart_table_disduce cart_lightgray cart_font16 fr"> 合计：<span class="cart_red cart_bold cart_money shopSum"><?php E($total-$_SESSION['index']['mgb'])?></span></div> </div>  <div> <div class="cart_paybar"> <a href="javascript:;" id="pay" class="cart_surebtn fr">确认并付款 &gt;</a> <span class="cart_paybar_info_cost cart_red cart_bold cart_font26 cart_money fr goodsSum" finalprice="300.00">¥<?php E($_SESSION['index']['pay'] = $total-$_SESSION['index']['mgb'])?></span> <div class="cart_paybar_info cart_pregray fr"> 共有 <span class="cart_red goodsNum"><?php E($num)?></span> 件商品，总计： </div> <a href="?c=car&list" class="cart_back cart_hoverline cart_pregray">返回购物车</a> </div> </div> </div></div>

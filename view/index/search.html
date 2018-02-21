@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title> 
+  <link href="public/css/erji.css" rel="stylesheet" type="text/css" /> 
+  <link href="public/css/footer.css" rel="stylesheet" type="text/css" />
+  <style>
+      #page a, #page span{float:left;height:30px;border:1px solid #ddd;color:#333;width:30px;text-align:center;font:13px/30px 微软雅黑;border-left:none;}
+      #page .first,#page .end{width:46px;}
+      #page .first{border-left:1px solid #ddd;border-top-left-radius:5px;border-bottom-left-radius:5px;}
+      #page .end{border-top-right-radius:5px;border-bottom-right-radius:5px;}
+      #page a:hover{background:#f2f2f2;}
+      #page span{background:#ddd;}
+      .detail{width:1200px;margin:30px auto;}
+      .detail_row{width:1225px;}
+      .goods{float:left;width:220px;height:405px;margin:0 25px 50px 0;}
+      .goods .img{width:220px;}
+      .tag{height:18px;margin:0 5px 0 0;}
+      .title{font:14px/22px 微软雅黑;text-overflow:ellipsis;height:22px;overflow:hidden;color:#666;margin:6px 0 0 0;}
+      .pay{font:700 16px/25px 微软雅黑;}
+  </style>
+</head> 
+<body>
+
+<?php require 'view/index/head2.html'; ?>
+
+<div class="detail">
+  <div class="detail_row">
+
+
+<?php
+  $is_new = '<img src="public/images/upload_ifqwmmbwgy3gkyjzhazdambqgyyde_60x36.png" class="tag"/>';
+  $is_hot = '<img src="public/images/upload_ifrdcyjvgu3gkyjzhazdambqmeyde_60x36.png"  class="tag"/>';
+  $is_best= '<img src="public/images/upload_ifrtcy3bgm3gkyjzhazdambqhayde_60x36.png"  class="tag"/>';
+
+  if(!empty($a)){
+
+    foreach($a as $v){
+      $new = $v['new']==0 ? '' : $is_new;
+      $hot = $v['hot']==0 ? '' : $is_hot;
+      $best = $v['best']==0 ? '' : $is_best;
+      $img = dirname($v['img']).'/220_'.basename($v['img']);
+
+      echo '
+      <div class="goods"> 
+        <a href="?c=detail&detail='.$v['id'].'" class="">
+          <img class="img" src="'.$img.'" alt="" />
+        </a> 
+        <a href="?c=detail&detail='.$v['id'].'">
+        <p class="title">'.$v['name'].'</p>
+        <p class="">'.$new.$hot.$best.'</p> 
+        <div class=""> 
+        <b class="pay fl">&yen;'.$v['pay'].'</b> 
+        <span class="fr">'.$v['look'].'<img src="public/images/upload_ie4tcmjqgjrwczbshazdambqgqyde_16x15.png"/></span> 
+        </div></a> 
+      </div>';
+    }
+  }
+?>
+      <div style="clear:both;"></div>
+  </div>
+
+  <div id="page" class="fr"> 
+    <?php E($b['page'])?>
+  </div> 
+
+</div>
+
+<?php require 'view/index/footer.html'; ?>

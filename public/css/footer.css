@@ -1,0 +1,93 @@
+/*预定义样式*/
+body{min-width:1200px;width:100%;}
+.fl{float:left}
+.fr{float:right;}
+.w{margin:0 auto;width:1200px;}
+.no-right-border{border-right:0 !important;}
+.no-padding{padding:0 !important;}
+.rcolor{color:#ff4455 !important;}
+.no-right-padding{padding-right:0 !important;}
+.clear{clear:both;}
+
+/* footer */
+#footer{
+  background:#fbfbfb url("../images/foot_ieydomrxmfswgnrymiytambqhayde_24x160.png")repeat-x;
+  padding-bottom:20px;
+  margin-top:90px;
+  padding-top:30px;
+}
+.f-head .f-copyright{
+  width:300px;
+}
+.f-head .f-copyright .f-logo{
+  display:block;
+  width:150px;
+  height:45px;
+}
+.f-head .f-copyright p{
+  color:#ccc;
+}
+.f-head .f-copyright p a{
+  color:#ccc;
+}
+.f-head .f-about-us{
+  width:600px;
+}.f-about-us li{
+  float:left;
+  width:100px;
+  margin-left:40px;
+  margin-right:60px;
+}
+.f-about-us li h4{
+  color:#000;
+  line-height:30px;
+  font-weight:900;
+}
+.f-about-us li a{
+  display:block;
+  height:20px;
+  line-height:20px;
+}
+.f-head .f-cation{
+  width:300px;
+}
+.f-head .f-cation h3{
+  line-height:30px;
+  font-weight:900;
+}
+.f-head .f-cation a{
+  display:inline-block;
+  height:30px;
+  margin-right:15px;
+}
+.f-head .f-cation .f-police{
+  width:40px;
+  background:url(../images/split.png)no-repeat -495px -47px;
+}
+.f-head .f-cation .f-pingan{
+  width:130px;
+  background:url(../images/split.png)no-repeat -255px -47px;
+}
+.f-head .f-cation .f-kexin{
+  width:80px;
+  background:url(../images/split.png)no-repeat -405px -47px;
+  margin:0;
+}
+.footer-bar .f-link{
+  margin-top:15px;
+  padding-top:10px;
+  border-top:1px solid #ccc;
+}
+.footer-bar .f-link li{
+  float:left;
+  margin-right:18px;
+}
+.footer-bar .f-link li a{
+  margin-right:10px;
+  display:block;
+  color:#000;
+}
+.footer-bar .f-link li a:hover{
+  color:#ff4466;
+  text-decoration:underline;
+}

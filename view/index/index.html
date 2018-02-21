@@ -1,0 +1,309 @@
+<?php require_once 'view/index/header.html'; ?>
+    <title>蘑菇街</title>
+    <link rel="stylesheet" type="text/css" href="public/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="public/css/style.css"/>
+    <link href="public/css/erji.css" rel="stylesheet" type="text/css" /> 
+
+    <script type="text/javascript" src="public/js/jquery.min2.14.js"></script>
+    <script type="text/javascript" src="public/js/script.js"></script>
+<?php require_once 'view/index/menu.html'; ?>
+
+		<div id="container">
+			<div class="content-bar w clearfix">
+				<div class="content-l fl">
+					<ul class="menu-list">
+
+<?php
+
+$x = 1;
+if(!empty($a)){
+	foreach($a as $v){
+$rc1 = $v[3]==1 ? 'rcolor' : null;
+$rc2 = $v[7]==1 ? 'rcolor' : null;
+$rc3 = $v[11]==1 ? 'rcolor' : null;
+
+
+
+echo '
+		<li>
+			<div class="menu-area clearfix">
+				<a class="menu" href="?c=search&cate='.$v['id'].'">'.$v['nav'].'</a>
+				<a class="menu-1 '.$rc1.'" href="?c=search&nav='.$v[0].'">'.$v[1].'</a>
+				<a class="menu-1 '.$rc2.'" href="?c=search&nav='.$v[4].'">'.$v[5].'</a>
+				<a class="menu-1 '.$rc3.' no-right-border no-right-padding" href="?c=search&nav='.$v[8].'">'.$v[9].'</a>
+			</div>
+			<div class="m-more m-'.$x++.'">
+				<h2></h2>
+			</div>
+		</li>';
+	}
+}
+
+?>
+
+					</ul>
+				</div>
+				<div class="content-r fl clearfix">
+<!--轮播图 -->
+					<div class="slide-box fl">
+						<ul class="slide-list clearfix">
+							<li>
+								<a href="?c=search&cate=4">
+									<img src="public/images/yongzhuang.jpg"/>
+								</a>
+							</li>
+							<li>
+								<a href="?c=search&cate=9">
+									<img src="public/images/upload_ie4tmztdmq4dmojthazdambqgqyde_715x530.jpg"/>
+								</a>
+							</li>
+							<li>
+								<a href="?c=search&cate=12">
+									<img src="public/images/upload_ifrdqyrwmqztinzthazdambqmeyde_715x530.jpg"/>
+								</a>
+							</li>
+							<li>
+								<a href="?c=search&cate=7">
+									<img src="public/images/upload_ifrdgzbsgbqtanzthazdambqmeyde_715x530.jpg"/>
+								</a>
+							</li>
+							<li>
+								<a href="?c=search&cate=8">
+									<img src="public/images/xf_ifrwkmjsge2winbthazdambqhayde_715x530.jpg"/>
+								</a>
+							</li>
+						</ul>
+					</div>
+<!--轮播图-->
+<?php
+if(!empty($c)){
+	$img1 = dirname($c[0]['name']).'/220_'.basename($c[0]['name']);
+	$img2 = dirname($c[1]['name']).'/220_'.basename($c[1]['name']);
+}
+?>
+					<div class="pandian fr">
+						<div class=" border-bottom">
+							<a href="?c=detail&detail=<?php E($c[0]['id'])?>">
+								<img style="width:180px;height:220px" src="<?php E($img1)?>"/>
+							</a>
+						</div>
+						<div class="img">
+							<a href="?c=detail&detail=<?php E($c[1]['id'])?>">
+								<img style="width:180px;height:220px" src="<?php E($img2)?>"/>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="set-time w clearfix">
+				<div class="time-dao fl">
+					<div class="new-time">
+						<p>
+							<span class="wenz">限时快抢</span>
+							<span class="num h">01</span>
+							<span class="dia">:</span>
+							<span class="num s">01</span>
+							<span class="dia">:</span>
+							<span class="num m">01</span>
+						</p>
+					</div>
+					<div class="kuaiqiang">
+						<img src="public/images/s-2.jpg" />
+						<span class="hot">
+							<span class='size-16'>25元</span><br />
+							<span>快抢购</span>
+						</span>
+					</div>
+				</div>
+				<div class="set-area1 fl clearfix">
+					<a href="?c=search&cate=1">
+						<img src="public/images/s-1.jpg"/>
+					</a>
+					<a href="?c=search&cate=9">
+						<img src="public/images/s-6.png" />
+					</a>
+				</div>
+				<div class="set-area2">
+					<a href="?c=search&cate=7" class="margin-bottom">
+						<img src="public/images/s-4.jpg" />
+					</a>
+					<a href="?c=search&cate=8">
+						<img src="public/images/s-5.jpg" />
+					</a>
+				</div>
+			</div>
+<!--运动馆-->
+			<div class="area-list-a w">
+				<div class="title-biao clearfix">
+					<div class="bg-log fl"></div>
+					<h3>新品上市</h3>
+					<div class="bg-log fr"></div>
+				</div>
+				<div class="motion clearfix">
+					<div class="motion-barand fl">
+						<div class="barand-dome">
+							<a href="?c=search&search=">
+								<img src="public/images/6a_ie4tqmjqmzswmnjqhazdambqgqyde_183x213.png"/>
+							</a>
+						</div>
+						<ul class='clearfix barand-list'>
+							<li>
+								<a href="?c=search&search=">
+									<img src="public/images/nk.jpg" />
+									<span class="on-none"></span>
+								</a>
+							</li>
+							<li>
+								<a href="?c=search&search=">
+									<img src="public/images/fs.jpg" />
+									<span class="on-none"></span>
+								</a>
+							</li>
+							<li>
+								<a href="?c=search&search=">
+									<img src="public/images/bd.jpg" />
+									<span class="on-none"></span>
+								</a>
+							</li>
+							<li>
+								<a href="?c=search&search=">
+									<img src="public/images/ad.jpg" />
+									<span class="on-none"></span>
+								</a>
+							</li>
+							<li>
+								<a href="?c=search&search=">
+									<img src="public/images/ll.jpg" />
+									<span class="on-none"></span>
+								</a>
+							</li>
+							<li>
+								<a href="?c=search&search=">
+									<img src="public/images/co.png" />
+									<span class="on-none"></span>
+								</a>
+							</li>
+							<li>
+								<a href="?c=search&search=">
+									<img src="public/images/bz.jpg" />
+									<span class="on-none"></span>
+								</a>
+							</li>
+							<li>
+								<a href="?c=search&search=">
+									<img src="public/images/adi.png" />
+									<span class="on-none"></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="dome-bar fr clearfix">
+						<div class="theme fl">
+							
+<?php								
+if(!empty($b)){
+	$img = dirname($b[0]['img']).'/400_'.basename($b[0]['img']);
+
+		echo '<a href="?c=search&cate='.$b[0]['pid'].'"><img src="'.$img.'">';
+
+}
+?>
+							</a>
+						</div>
+						<ul class="dome-list fl clearfix">
+
+<?php
+if(!empty($b)){
+	for($i=1;$i<count($b);$i++){
+		$img = dirname($b[$i]['img']).'/220_'.basename($b[$i]['img']);
+
+		echo '
+			<li>
+				<a href="?c=search&cate='.$b[$i]['pid'].'">
+					<img src="'.$img.'">
+					<span class="theme-title">'.$b[$i]['name'].'</span>
+				</a>
+			</li>';
+	}
+}		
+?>
+						</ul>
+					</div>
+				</div>
+			</div>
+<!--运动 end-->
+<!--红人-->
+			<div class='area-list-b w'>
+				<div class="title-biao clearfix">
+					<div class="bg-log fl"></div>
+					<h3>红人Bazaar</h3>
+					<div class="bg-log fr"></div>
+				</div>
+				<div class="h-content clearfix">
+					<div class="h-modular-l fl">
+						<div class="h-dome">
+							<div class="h-d">
+								<a href="?c=search&search=">
+									<img src="public/images/80_ifrdmmbrmzrdknddgyzdambqmeyde_170x170.jpg"/>
+								</a>
+								<a href="?c=search&search=" class="dome-top">
+									<img src="public/images/80_ie4tanbsmvrtknddgyzdambqgqyde_170x170.jpg" />
+								</a>
+							</div>
+						</div>
+						<div class="h-link">
+							<a href="?c=search&search=">设计频道</a>
+							<a href="?c=search&search=">模特频道</a>
+							<a href="?c=search&search=">男友频道</a>
+							<a href="?c=search&search=">萌妹频道</a>
+							<a href="?c=search&search=">搜身频道</a>
+							<a href="?c=search&search=">中性频道</a>
+							<a href="?c=search&search=">情趣频道</a>
+							<a href="?c=search&search=">极简频道</a>
+							<a href="?c=search&search=">博主频道</a>
+						</a>
+						</div>
+					</div>
+					<div class="h-modular-r fl">
+						<div class="h-choice">
+							<a class="choice-t" href="?c=search&search=">
+								<img src="public/images/80_ifqtezjxgfsdmnbvg4zdambqgyyde_305x330.jpg" />
+							</a>
+							<a class="choice-b" href="?c=search&search=">
+								<img src="public/images/80_ifqtamtbgm2tgzrugyzdambqgyyde_130x150.jpg">
+								<div class="b-title">
+									<p class="b-caot">早春感潮流外套</p>
+									<p class="b-san">流行趋势早早入荷</p>
+								</div>
+							</a>
+						</div>
+						<div class="h-choice">
+							<a class="choice-t" href="?c=search&search=">
+								<img src="public/images/80_ie3wmmjrgjstmnbvg4zdambqgayde_305x330.jpg" />
+							</a>
+							<a class="choice-b" href="?c=search&search=">
+								<img src="public/images/80_ifrdanrsgaztkzrugyzdambqmeyde_130x150.jpg">
+								<div class="b-title">
+									<p class="b-caot">流行色热销款毛衣</p>
+									<p class="b-san">针织单品持续温暖</p>
+								</div>
+							</a>
+						</div>
+						<div class="h-choice">
+							<a class="choice-t" href="?c=search&search=">
+								<img src="public/images/80_ie4tcojrmjstmnbvg4zdambqgqyde_305x330 (1).jpg" />
+							</a>
+							<a class="choice-b" href="?c=search&search=">
+								<img src="public/images/80_ie3tcmzqmi3dkzrugyzdambqgayde_130x150.jpg">
+								<div class="b-title">
+									<p class="b-caot">清新少女感裙装</p>
+									<p class="b-san">2016腿玩年秘诀<sup>~</sup></p>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!--红人 end-->
+<?php require_once 'view/index/footer.html'; ?>

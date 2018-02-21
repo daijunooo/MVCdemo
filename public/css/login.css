@@ -1,0 +1,42 @@
+*{margin:0;padding:0;}
+img{border:none;}
+.fl{float:left;}
+.fr{float:right;}
+.clear{clear:both;}
+li{list-style:none;}
+a{text-decoration:none;}
+.ml{margin-left:10px;}
+
+/* tongyong */
+#loginmain{width:1200px;height:500px;margin:0 auto 200px;}
+
+.log{display:block;margin-left:130px;margin-top:30px;}
+
+.loginleft{width:400px;height:300px;margin-left:180px;margin-top:70px;}
+
+#loginmain .loginright{width:350px;height:380px;border:1px solid #DCDCDC;margin-top:50px;margin-right:130px;}
+
+.deng{display:block;width:350px;height:60px;border-bottom:1px solid #DCDCDC;}
+.la1{line-height:10px;font-size:14px;width:100px;height:30px;display:block;border-bottom:3px solid #FF4066;color:black;margin-top:27px;margin-left:20px;padding:0 0 0 25px;text-decoration:none;}
+.la2{color:#AAAABC;width:120px;height:30px;display:block;margin-top:27px;margin-right:20px;padding:0 25px 0 0;text-decoration:none;}
+/* end tou */
+
+
+
+
+.W10{width:285px;height:30px;margin-left:25px;margin-top:16px;text-indent:12px;font-size:12px;}
+.W11{margin-left:25px;margin-top:16px;}
+.W12{background:#FF4066;border:none;color:white;}
+.W13{width:285px;height:30px;margin-left:25px;}
+
+.la3{margin-top:16px;margin-right:45px;font-size:13px;color:#999999;}
+.la4{font-size:13px;color:#999999;}
+.la5{margin-top:16px;display:block;text-decoration:underline;}
+.la6{text-decoration:underline;}
+
+.qita{display:block;margin-left:25px;margin-top:60px;}
+p :focus {outline:none;}
+.la8{margin-left:25px;margin-top:16px;}
+.la9{margin-right:40px;margin-top:16px;}
+.loginul .logli{float:left;margin:5px 2px;}
+.loginul{margin-left:25px;}

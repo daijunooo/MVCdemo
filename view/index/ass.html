@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>订单列表_蘑菇街</title>
+    <link href="public/css/buylist.css" rel="stylesheet" type="text/css">
+    <link href="public/css/erji.css" rel="stylesheet" type="text/css" /> 
+    <link href="public/css/footer.css" rel="stylesheet" type="text/css" /> 
+
+</head>
+<body class="media_screen_1200">
+<?php require 'view/index/head2.html'; ?>
+  <div id="body_wrap"> 
+   <div class="mu_wrap wrap clearfix"> 
+    <div id="navListWrap">
+<?php require 'view/index/user.html'; ?>
+     <div class="mu_content_wrap"> 
+      <div class="order-title"> 
+       <ul class="order-title-column clearfix"> 
+        <li class="goods">商品</li> 
+        <li class="price">单价(元)</li> 
+        <li class="quantity">数量</li> 
+        <li class="aftersale">售后</li> 
+        <li class="total">实付款(元)</li> 
+        <li class="status">交易状态</li> 
+        <li class="other">操作</li> 
+       </ul> 
+      </div> 
+      <div id="orderWrap">
+       <div class="order-list">
+        <div class="order-section unpaid" data-payid="22620483214572"> 
+         <table class="fl order-table" style="width:500px;"> 
+          <tbody> 
+           <tr class="order-table-header"> 
+            <td> 
+             <div class="order-info fl">
+              <span class="no"> 订单编号： <span class="order_num"> 22620483224572 </span> </span>
+            </td>
+           </tr> 
+           <tr class="order-table-item last"> 
+            <td class="goods" rowspan="1"> <a class="pic" href="#" title="查看宝贝详情" hidefocus="true" target="_blank"> <img src="public/images/134126839_ie4tin3dgnrtsnrxhazdambqgqyde_640x960.jpg_100x100.jpg" alt="查看宝贝详情" width="70" /> </a> 
+             <div class="desc"> 
+              <p> <a href="#" target="_blank">美特斯邦威2016夏季新款无袖连帽运动风连衣裙603081</a> 
+              </p> 
+             </div></td>
+             </tr> 
+          </tbody> 
+         </table>
+         <form class="fr" action="?c=user&mess" method="post">
+          <textarea name="mess" class="order-table" style="width:500px;padding:10px" rows="6" cols="80" placeholder="评论..."></textarea><br/>
+          <input type="submit" class="fr order-btn primary order-pay" value="提交">
+         </form> 
+        </div> 
+       </div>
+       <div id="paginator-list"></div>
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div>
+<?php require 'view/index/footer.html'; ?>
